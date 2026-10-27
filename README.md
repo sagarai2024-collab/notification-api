@@ -1,12 +1,14 @@
 # Notification Processing API
 
-A small ASP.NET Core (.NET 9) Web API that accepts, validates, stores and processes **Email** notifications.
-Storage is SQL Server (EF Core). Failed sends are retried with back-off, and crashed runs are recovered.
+An ASP.NET Core 9 Web API that accepts email notifications, stores them in SQL Server, and sends them in priority order with retries. Parallel workers cannot claim the same row, a duplicate request returns the original notification, and a crashed run is picked up again after a timeout.
+
+58 tests: the validator, service and worker tests need no setup, and 22 repository and API tests run against a temporary SQL Server database (skipped when no server answers).
 
 ## 1. How to run
 
+From the repository root:
+
 ```bash
-cd D:\Codingtest
 dotnet run --project NotificationApi --urls http://localhost:5235
 ```
 
