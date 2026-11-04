@@ -132,3 +132,7 @@ Pending --claim--> Processing --success--> Sent
 * **What to return for a duplicate**: 200 with the original notification (idempotent), not an error, so the retrying client is happy.
 * **"Process pending notifications"**: only those that are *due*; future-dated ones stay pending. Failed-but-retryable ones come back after their back-off.
 * **Provider failure status**: `Pending` with a later `NextAttemptAt` while attempts remain, then `Failed`.
+
+## Licence
+
+© 2026 Sagarika Chakraborty. All rights reserved, see [LICENSE](LICENSE). Do not copy or reuse without written permission.
